@@ -25,7 +25,7 @@
 
 	<target name="unit">
 		<exec command="
-			phpunit --tap -vc ${target_dir_name}/lib/tests/phpunit.xml
+			phpunit --tap -vc ${target_dir_name}/tests/phpunit.xml
 		"/>
 	</target>
 
@@ -37,7 +37,7 @@
 			--standard=${phpcs_standard}
 			--report-checkstyle=${phpcs_dir_name}/checkstyle.xml
 			--ignore=third_party,templates_c/sp
-			${target_dir_name}/lib/application
+			${target_dir_name}/application
 		"/>
 	</target>
 
@@ -45,7 +45,7 @@
 		<mkdir dir="${phpmd_dir_name}" />
 		<exec dir="." command="
 			phpmd
-			${target_dir_name}/lib/application
+			${target_dir_name}/application
 			xml
 			${phpmd_rules}
 			--reportfile ${phpmd_dir_name}/pmd.xml
@@ -61,7 +61,7 @@
 			--log-pmd ${phpcpd_dir_name}/cpd.xml
 			--exclude third_party
 			--exclude templates_c/sp
-			${target_dir_name}/lib/application
+			${target_dir_name}/application
 		"/>
 	</target>
 
@@ -71,7 +71,7 @@
 			phpunit
 			--tap
 			--testsuite ModelTests
-			-c ${target_dir_name}/lib/tests/phpunit.xml
+			-c ${target_dir_name}/tests/phpunit.xml
 			--log-junit ${phpunit_dir_name}/junit_model.xml
 		"/>
 	</target>
@@ -82,7 +82,7 @@
 			phpunit
 			--tap
 			--testsuite LibTests
-			-c ${target_dir_name}/lib/tests/phpunit.xml
+			-c ${target_dir_name}/tests/phpunit.xml
 			--log-junit ${phpunit_dir_name}/junit_lib.xml
 		"/>
 	</target>
@@ -93,7 +93,7 @@
 			phpunit
 			--tap
 			--testsuite ControllerTests
-			-c ${target_dir_name}/lib/tests/phpunit.xml
+			-c ${target_dir_name}/tests/phpunit.xml
 			--log-junit ${phpunit_dir_name}/junit_controller.xml
 		"/>
 	</target>
@@ -105,7 +105,7 @@
 			phpunit
 			--tap
 			--testsuite ControllerTests
-			-c ${target_dir_name}/lib/tests/phpunit.xml
+			-c ${target_dir_name}/tests/phpunit.xml
 			--coverage-html ${phpunit_dir_name}/html
 			--coverage-clover ${phpunit_dir_name}/clover_controller.xml
 			--log-junit ${phpunit_dir_name}/junit_controller.xml
@@ -117,7 +117,7 @@
 		<exec dir="." command="
 			phpunit
 			--tap
-			-c ${target_dir_name}/lib/tests/phpunit.xml
+			-c ${target_dir_name}//tests/phpunit.xml
 			--coverage-html ${phpunit_dir_name}/html
 			--coverage-clover ${phpunit_dir_name}/clover.xml
 			--log-junit ${phpunit_dir_name}/junit.xml
@@ -130,7 +130,7 @@
 			pdepend
 			--jdepend-xml=${pdepend_dir_name}/jdepend.xml
 			--ignore=third_party,templates_c/sp
-			${target_dir_name}/lib/application
+			${target_dir_name}/application
 		"/>
 	</target>
 
@@ -141,7 +141,7 @@
 			--log-csv ${phploc_dir_name}/plot.csv
 			--exclude third_party
 			--exclude templates_c/sp
-			${target_dir_name}/lib/application
+			${target_dir_name}/application
 		"/>
 	</target>
 
@@ -153,7 +153,7 @@
 		<!-- suppress E_STRICT, E_NOTICE. E_ALL ^ E_STRICT ^ E_NOTICE == 30711 -->
 		<exec dir="." command="
 			php -d error_reporting=30711 ${phpdoc_bin} -q
-			-d ${target_dir_name}/lib/application/controllers,${target_dir_name}/lib/application/libraries,${target_dir_name}/lib/application/models,${target_dir_name}/lib_batch/application/controllers
+			-d ${target_dir_name}/application/controllers,${target_dir_name}/application/libraries,${target_dir_name}/application/models,${target_dir_name}/lib_batch/application/controllers
 			-t ${phpdoc_dir_name}/
 		"/>
 	</target>
