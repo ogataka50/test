@@ -1,6 +1,6 @@
 <?php
 
-class WelcomeTest extends \CIUnit_TestCase 
+class WelcomeTest extends \CIUnit_TestCase
 {
 	public function setUp()
 	{
@@ -15,14 +15,14 @@ class WelcomeTest extends \CIUnit_TestCase
     {
 		// Call the controllers method
 		$this->CI->index();
-		
+
 		// Fetch the buffered output
 		$out = output();
-		
+
 		// Check if the content is OK
 		$this->assertSame(0, preg_match('/(error|notice)/i', $out));
 
-
+	 	$this->assertEquals(0, 1);
 	 	$this->assertEquals(0, 0);
 	 	$this->assertEquals(0, 0);
 	 	$this->assertEquals(0, 0);
